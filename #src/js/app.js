@@ -7,10 +7,8 @@ import { initAnimation } from "./modules/animation.js";
 initAnimation();
 */
 //================BURGER=====================
-/*
 import { burger } from "./modules/burger.js";
 burger();
-*/
 //===============DYNAMIC-ADAPT================
 /*
 import { useDynamicAdapt } from "./modules/dynamic-adapt.js";

@@ -16,22 +16,25 @@
 
 /*====================ПІД'ЄДНАННЯ ШРИФТІВ======================*/
 /*&display=swap дадати якщо під'єднувати через плагін*/
-//@import url(https://fonts.googleapis.com/css?family=Poppins:300,regular,500,600,700&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Manrope:regular,500,600,700,800&display=swap);
+@import url(https://fonts.googleapis.com/css?family=DM+Sans:700&display=swap);
 //@import "fonts"; /*якщо є шрифти локально (іконковий шрифт враховується)*/
 //@import "icons"; /*іконковий шрифт*/
 /*--------------ШРИФТ ЗА ЗАМОВЧУВАННЯМ------------*/
-$fontFamily: 'Montserrat';
-$fontSize: rem(16);
+$fontFamily: 'Manrope';
+$fontSize: rem(16); 
 /*====================ГОЛОВНІ КОЛЬОРИ======================*/
-$mainColor: #222220;
+$mainColor: #000;
+$charcoal: #31353B;
+$lightBlue: #BDCCFF;
 $whiteColor: #FFF;
 //=============НАЛАШТУВАННЯ АДАПТИВНОЇ СІТКИ==============//
 // Мінімальна ширина макету
 $minWidth: 320;
 // Ширина полотна (макету)
-$maxWidth: 1922;
+$maxWidth: 1440;
 //Ширина обмежуючого контейнеру
-$maxWidthContainer: 1572;
+$maxWidthContainer: 1170;
 // Загальний відступ в контейнера
 // ( 30 = по 15px зліва і права, якщо 0 - відступів немає )
 $containerPadding: 30;

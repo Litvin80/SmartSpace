@@ -3,11 +3,13 @@
 /*========= ФУНКЦІЯ ПЕРЕТВОРЕННЯ ЗНАЧЕННЯ В EM ===========*/
 /*====================ПІД'ЄДНАННЯ ШРИФТІВ======================*/
 /*&display=swap дадати якщо під'єднувати через плагін*/
+@import url(https://fonts.googleapis.com/css?family=Manrope:regular,500,600,700,800&display=swap);
+@import url(https://fonts.googleapis.com/css?family=DM+Sans:700&display=swap);
 /*--------------ШРИФТ ЗА ЗАМОВЧУВАННЯМ------------*/
 /*====================ГОЛОВНІ КОЛЬОРИ======================*/
 /*--------------БРЕЙК-ПОІНТИ------------*/
 [class*=__container] {
-  max-width: 100.125rem;
+  max-width: 75rem;
   margin: 0 auto;
   padding: 0 0.9375rem;
 }
@@ -64,9 +66,9 @@ html, body {
 }
 
 body {
-  color: #222220;
+  color: #000;
   line-height: 1;
-  font-family: "Montserrat";
+  font-family: "Manrope";
   font-size: 1rem; /*text-rendering: optimizeLegibility;*/
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
@@ -76,7 +78,7 @@ body {
 }
 
 input, button, textarea {
-  font-family: "Montserrat";
+  font-family: "Manrope";
   font-size: inherit;
 }
 
@@ -103,63 +105,215 @@ ul li {
 }
 
 /*====================HEADER======================*/
-/*
 .icon-menu {
-    display: none;
-    @media (max-width: $mobile) {
-        display: block;
-        position: relative;
-        width: rem(30);
-        height: rem(18);
-        z-index: 5;
-        @media (any-hover: none) {
-            cursor: default;
-        }
-        span,
-        &::before,
-        &::after {
-            content: "";
-            transition: all 0.3s ease 0s;
-            right: 0;
-            position: absolute;
-            width: 100%;
-            height: rem(2);
-            background-color: #000;
-        }
-        &::before {
-            top: 0;
-        }
-        &::after {
-            bottom: 0;
-        }
-        span {
-            top: calc(50% - rem(1));
-        }
-        &._active {
-            span {
-                width: 0;
-            }
-            &::before,
-            &::after {
-            }
-            &::before {
-                top: calc(50% - rem(1));
-                transform: rotate(-45deg);
-            }
-            &::after {
-                bottom: calc(50% - rem(1));
-                transform: rotate(45deg);
-            }
-        }
-    }
+  display: none;
 }
-*/
+@media (max-width: 47.99875em) {
+  .icon-menu {
+    display: block;
+    position: relative;
+    width: 1.875rem;
+    height: 1.125rem;
+    z-index: 5;
+  }
+}
+@media (max-width: 47.99875em) and (any-hover: none) {
+  .icon-menu {
+    cursor: default;
+  }
+}
+@media (max-width: 47.99875em) {
+  .icon-menu span, .icon-menu::before, .icon-menu::after {
+    content: "";
+    transition: all 0.3s ease 0s;
+    right: 0;
+    position: absolute;
+    width: 100%;
+    height: 0.125rem;
+    background-color: #000;
+  }
+  .icon-menu::before {
+    top: 0;
+  }
+  .icon-menu::after {
+    bottom: 0;
+  }
+  .icon-menu span {
+    top: calc(50% - 0.0625rem);
+  }
+  .icon-menu._active span {
+    width: 0;
+  }
+  .icon-menu._active::before, .icon-menu._active::after {
+    background-color: #FFF;
+  }
+  .icon-menu._active::before {
+    top: calc(50% - 0.0625rem);
+    transform: rotate(-45deg);
+  }
+  .icon-menu._active::after {
+    bottom: calc(50% - 0.0625rem);
+    transform: rotate(45deg);
+  }
+}
+
 .header {
   position: fixed;
   left: 0;
   top: 0;
   width: 100%;
   z-index: 50;
+}
+.header__container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 1.25rem;
+  align-items: center;
+  min-height: 6.375rem;
+}
+@media (max-width: 75em) {
+  .header__container {
+    min-height: calc(4.5rem + (102 - 72) * (100vw - 47.99875em) / (1200 - 767.98));
+  }
+}
+@media (max-width: 47.99875em) {
+  .header__container {
+    min-height: 4.5rem;
+  }
+}
+.header__logo {
+  z-index: 20;
+  color: #31353B;
+  font-size: 1.4375rem;
+  font-weight: 800;
+  transition: all 0.3s;
+}
+@media (any-hover: hover) {
+  .header__logo:hover {
+    scale: 1.05;
+  }
+}
+@media (max-width: 47.99875em) {
+  .header__logo._active {
+    color: #FFF;
+  }
+}
+.header__menu {
+  justify-self: end;
+}
+
+@media (max-width: 47.99875em) {
+  .menu__body {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    padding: 5.3125rem 0.9375rem 1.875rem 0.9375rem;
+    overflow: auto;
+    background-color: #BDCCFF;
+    transition: left 0.3s ease 0s;
+    display: grid;
+    row-gap: 1.25rem;
+  }
+  .menu__body._active {
+    left: 0;
+  }
+  .menu__body._active::before {
+    left: 0%;
+  }
+  .menu__body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: -100%;
+    height: 4.5rem;
+    background-color: #BDCCFF;
+    z-index: 2;
+    transition: left 0.3s ease 0s;
+  }
+}
+.menu__list {
+  display: flex;
+  column-gap: 2.5rem;
+}
+@media (max-width: 75em) {
+  .menu__list {
+    column-gap: calc(1.5625rem + (40 - 25) * (100vw - 47.99875em) / (1200 - 767.98));
+  }
+}
+@media (max-width: 47.99875em) {
+  .menu__list {
+    column-gap: 1.5625rem;
+  }
+}
+@media (min-width: 47.99875em) {
+  .menu__list {
+    flex-wrap: wrap;
+    align-items: center;
+    row-gap: 0.3125rem;
+  }
+}
+@media (max-width: 47.99875em) {
+  .menu__list {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1.25rem;
+  }
+}
+.menu__link {
+  color: inherit;
+  font-weight: 700;
+  font-size: 1rem;
+  font-family: "DM Sans";
+  position: relative;
+}
+@media (max-width: 75em) {
+  .menu__link {
+    font-size: calc(1.125rem + (16 - 18) * (100vw - 47.99875em) / (1200 - 767.98));
+  }
+}
+@media (max-width: 47.99875em) {
+  .menu__link {
+    font-size: 1.125rem;
+  }
+}
+.menu__link::after, .menu__link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 25%;
+  height: 0.125rem;
+  background-color: #000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease 0s;
+}
+.menu__link::after {
+  left: -25%;
+}
+.menu__link::before {
+  right: -25%;
+}
+@media (max-width: 47.99875em) {
+  .menu__link {
+    color: #FFF;
+    font-size: 1.5rem;
+  }
+}
+@media (any-hover: hover) {
+  .menu__link:hover::after, .menu__link:hover::before {
+    width: 50%;
+    opacity: 1;
+    visibility: visible;
+  }
+  .menu__link:hover::after {
+    left: 0%;
+  }
+  .menu__link:hover::before {
+    right: 0%;
+  }
 }
 
 /*====================FOOTER======================*/
