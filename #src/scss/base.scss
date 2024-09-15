@@ -1,0 +1,22 @@
+//@import "base/button";
+//@import "base/input";
+
+// Клас -IBG
+/*
+[class*="-ibg"] {
+    position: relative;
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+[class*="-ibg-contain"] {
+    img {
+        object-fit: contain;
+    }
+}
+*/

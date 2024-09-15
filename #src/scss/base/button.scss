@@ -1,0 +1,11 @@
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: rem(12) rem(30);
+    border-radius: rem(50);
+    font-weight: 300;
+    color: $mainColor;
+    position: relative;
+    overflow: hidden;
+}

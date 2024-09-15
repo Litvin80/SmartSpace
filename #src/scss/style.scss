@@ -1,0 +1,136 @@
+@use 'sass:math';
+
+/*========= ФУНКЦІЯ ПЕРЕТВОРЕННЯ ЗНАЧЕННЯ В REM ===========*/
+@function rem($valueInPixels, $baseFontSize: 16) {
+    // Перетворення значення в REM
+    $remValue: math.div($valueInPixels, $baseFontSize);
+    @return #{$remValue}rem;
+}
+
+/*========= ФУНКЦІЯ ПЕРЕТВОРЕННЯ ЗНАЧЕННЯ В EM ===========*/
+@function em($valueInPixels, $baseFontSize: 16) {
+    // Перетворення значення в EM
+    $emValue: math.div($valueInPixels, $baseFontSize);
+    @return #{$emValue}em;
+}
+
+/*====================ПІД'ЄДНАННЯ ШРИФТІВ======================*/
+/*&display=swap дадати якщо під'єднувати через плагін*/
+//@import url(https://fonts.googleapis.com/css?family=Poppins:300,regular,500,600,700&display=swap);
+//@import "fonts"; /*якщо є шрифти локально (іконковий шрифт враховується)*/
+//@import "icons"; /*іконковий шрифт*/
+/*--------------ШРИФТ ЗА ЗАМОВЧУВАННЯМ------------*/
+$fontFamily: 'Montserrat';
+$fontSize: rem(16);
+/*====================ГОЛОВНІ КОЛЬОРИ======================*/
+$mainColor: #222220;
+$whiteColor: #FFF;
+//=============НАЛАШТУВАННЯ АДАПТИВНОЇ СІТКИ==============//
+// Мінімальна ширина макету
+$minWidth: 320;
+// Ширина полотна (макету)
+$maxWidth: 1922;
+//Ширина обмежуючого контейнеру
+$maxWidthContainer: 1572;
+// Загальний відступ в контейнера
+// ( 30 = по 15px зліва і права, якщо 0 - відступів немає )
+$containerPadding: 30;
+//Ширина спрацювання першого брейкпоінту
+$containerWidth: $maxWidthContainer + $containerPadding;
+/*--------------БРЕЙК-ПОІНТИ------------*/
+$pc: em($containerWidth);   // Пк, ноутбуки, деякі планшети в горизонтальному положенні
+$tablet: em(991.98);    //Планшети, деякі телефони в горизонтальному положенні
+$mobile: em(767.98);    //Телефон L
+$mobileSmall: em(479.98);   //Телефон S
+//------Вибір типу адаптування------
+$responsiveType: 1; //якщо 2 - по БРЕЙК-ПОІНТАМ
+@if ($responsiveType==1) {
+    // Відзивчива
+    [class*="__container"] {
+        @if ($maxWidthContainer>0) {
+            max-width: rem($containerWidth);
+            margin: 0 auto;
+        }
+        @if ($containerPadding>0) {
+            @if ($maxWidthContainer>0) {
+                padding: 0 rem(calc($containerPadding / 2));
+            }
+        }
+    }
+} @else {
+    //По брейк-поінтам
+    [class*="__container"] {
+        margin: 0 auto;
+        @if ($maxWidthContainer>0) {
+            max-width: rem($maxWidthContainer);
+            box-sizing: content-box;
+        } @else {
+            @if ($containerPadding>0) {
+                padding: 0 rem(calc($containerPadding / 2));
+            }
+        }
+        @media (max-width: $pc) {
+            max-width: rem(970);
+        }
+        @media (max-width: $tablet) {
+            max-width: rem(750);
+        }
+        @media (max-width: $mobile) {
+            max-width: none;
+        }
+    }
+}
+/*=========MIXIN===========*/
+@import "mixin";
+/*====================ОБНУЛЕННЯ======================*/
+@import "nule";
+/*====================HEADER======================*/
+@import "header";
+/*====================FOOTER======================*/
+@import "footer";
+/*=========BASE===========*/
+@import "base";
+/*====================БЕМ БЛОКИ ТА ЗАГОЛОВКИ======================*/
+@import "common";
+/*====================BODY======================*/
+body {
+    /*
+    &._lock {
+        overflow: hidden;
+        touch-action: none;
+        overscroll-behavior: none;
+    }
+    */
+}
+/*=================SPOLLERS==================*/
+/*
+.spollers {
+    &._init {
+        .spollers__title {
+            cursor: pointer;
+        }
+    }
+    &__title {
+        cursor: default;
+    }
+}
+*/
+/*--------------WRAPPER------------*/
+.wrapper {
+    min-height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    @supports (overflow:clip) {
+        overflow: clip;
+    }
+    > main {
+        flex: 1 1 auto;
+    }
+    /* Фікс для слайдера
+    > * {
+        min-width: 0;
+    }
+    */
+}
+/*--------------HERO------------*/
